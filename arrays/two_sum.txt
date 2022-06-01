@@ -1,0 +1,17 @@
+//only logic
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        vector<int> ans;
+        map<int,int> totsum;
+        for(int i=0;i<nums.size();i++)
+        {
+            if(totsum.count(target-nums[i])>0)
+            {
+                return {totsum[target-nums[i]],i};
+            }
+            totsum[nums[i]]=i;
+        }
+        return {-1,-1};
+    }
+};

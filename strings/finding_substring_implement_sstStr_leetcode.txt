@@ -1,0 +1,26 @@
+//only logic
+class Solution {
+public:
+    int strStr(string haystack, string needle) {
+        int k=0,pos;
+        for(int i=0;i<haystack.size();i++)
+        {
+            if(needle.size()==0)
+                return 0;
+            else if(needle[k]==haystack[i])
+            {
+                pos=i;
+                while(needle[k]==haystack[i] && k<needle.size())
+                {
+                    k++;
+                    i++;
+                }
+                if(k==needle.size())
+                    return pos;
+                i=pos;
+                k=0;
+            }
+        }
+        return -1;
+    }
+};

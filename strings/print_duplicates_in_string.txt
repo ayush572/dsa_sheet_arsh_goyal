@@ -1,0 +1,17 @@
+//only logic
+string s="geeksforgeeks";
+int count[256]={0};
+for(int i=0;i<s.size();i++)
+{
+    count[s[i]]++;
+}
+for(int i=0;i<s.size();i++)
+{
+    if(count[s[i]]>1)
+    {
+        cout<<s[i]<<":"<<count[s[i]]<<"\n";
+        //so that the characters do not repeat while printing
+        count[s[i]]=0;
+    }
+}
+return 0;

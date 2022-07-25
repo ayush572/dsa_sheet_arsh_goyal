@@ -1,34 +1,36 @@
 #include<bits/stdc++.h>
 using namespace std;
 struct Node{
-    int k;
+    int val;
     Node *left, *right;
     Node(int d)
     {
-        k=d;
+        val=d;
         left=NULL;
         right=NULL;
     }
 };
-int height(Node *root)
+int max_bin_tree(Node *root)
 {
-    int tot_h=0;
+    int max_no;
     if(root==NULL)
-        return 0;
+        return INT_MIN;
     else if(root!=NULL)
     {
-        tot_h=max(height(root->left),height(root->right));
-        return tot_h+1;
+        max_no=max(max_bin_tree(root->left),max_bin_tree(root->right));
     }
+    return max(max_no,root->val);
 }
 int main()
 {
     Node *root=new Node(10);
     root->left=new Node(8);
-    root->right=new Node(30);
+    root->left->left=new Node(120);
+    root->left->left->right=new Node(200);
+    root->right=new Node(300);
     root->right->left=new Node(40);
     root->right->right=new Node(50);
-    int h=height(root);
-    cout<<"height is: "<<h;
+    int maxi_no=max_bin_tree(root);
+    cout<<"max no is: "<<maxi_no;
     return 0;
 }

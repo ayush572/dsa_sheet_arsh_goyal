@@ -18,6 +18,27 @@ void inorder(Node *root)
         cout<<root->k<<"->";
         inorder(root->right);
     }
+    return;
+}
+void preorder(Node *root)
+{
+    if(root!=NULL)
+    {
+        cout<<root->k<<"->";
+        inorder(root->left);
+        inorder(root->right);
+    }
+    return;
+}
+void postorder(Node *root)
+{
+    if(root!=NULL)
+    {
+        inorder(root->left);
+        inorder(root->right);
+        cout<<root->k<<"->";
+    }
+    return;
 }
 int main()
 {
@@ -27,5 +48,9 @@ int main()
     root->right->left=new Node(40);
     root->right->right=new Node(50);
     inorder(root);
+    cout<<"\n";
+    preorder(root);
+    cout<<"\n";
+    postorder(root);
     return 0;
 }

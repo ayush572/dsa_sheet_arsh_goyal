@@ -1,11 +1,11 @@
 #include<bits/stdc++.h>
 using namespace std;
 struct Node{
-    int k;
+    int val;
     Node *left, *right;
     Node(int d)
     {
-        k=d;
+        val=d;
         left=NULL;
         right=NULL;
     }
@@ -18,14 +18,24 @@ void height(Node *root, int k)
     {
         if(k==0)
         {
-            cout<<root->k<<" ";
+            cout<<root->val<<" ";
             return;
         }
         k--;
         height(root->left,k);
         height(root->right,k);
     }
-    return;
+    // while(root!=NULL && k!=0)
+    // {
+    //     k--;
+    //     height(root->left,k);
+    //     height(root->right,k);
+    // }
+    // if(root==NULL)
+    //     ;
+    // else
+    //     cout<<root->val<<" ";
+    // return;
 }
 int main()
 {

@@ -4,43 +4,47 @@ struct Node{
         int data;
         Node *next=NULL;
     };
-Node * delete_begin(Node *ptr){
+Node * delete_begin(Node *head){
     Node *ptr1,*temp;
-    if(ptr==NULL)
+    if(head==NULL)
     {
         return NULL;
     }
-    else if(ptr->next=ptr)
+    else if(head->next==head)
     {
-        delete ptr;
+        delete head;
         return NULL;
     }
+
+    //O(n) time solution
+    // else{
+
+    //     ptr1=ptr;
+    //     while(ptr1->next!=ptr)
+    //     {
+    //         ptr1=ptr1->next;
+    //     }
+    //     ptr1->next=ptr->next;
+    //     delete ptr;
+    //     return ptr1->next;
+    // }
+
+    //O(1) time solution
     else{
-        ptr1=ptr;
-        while(ptr1->next!=ptr)
-        {
-            ptr1=ptr1->next;
-        }
-        ptr1->next=ptr->next;
-        delete ptr;
-        return ptr1->next;
+        head->data=head->next->data;
+        temp=head->next;
+    head->next=head->next->next;
+    
+    delete temp;
+    return head;
     }
+    
 }
 
 void traversal(Node *ptr){
     Node *temp;
     if(ptr==NULL)
         return;
-
-    //using the while or for loop, we have been explicitely maintaining the csase for a SINGLE NODE.
-    // temp=ptr->next;
-    // cout<<ptr->data<<"->";
-    // while(temp!=ptr)
-    // {
-    //     cout<<temp->data<<"->";
-    //     temp=temp->next;
-    // }
-
     //using a do while loop
     temp=ptr;
     do{
